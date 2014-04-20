@@ -4,7 +4,7 @@
 #include "Work1.h"
 #include "Work2.h"
 #include "Work3.h"
-#include "inject.hpp"
+#include "../../inject.hpp"
 
 inject_as_share(IWork, Work1)
 inject_as_singleton(Work2, Work2, 1)

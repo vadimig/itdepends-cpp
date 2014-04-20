@@ -11,7 +11,7 @@ void Work2::doSmth()
 Work2::Work2(int p1)
 : mI(++sI)
 {
-	std::cout << "2#" << mI << ": created with parameter" << p1 << std::endl;
+	std::cout << "2#" << mI << ": created with parameter " << p1 << std::endl;
 }
 
 Work2::~Work2()

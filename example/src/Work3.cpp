@@ -11,7 +11,7 @@ void Work3::doSmth()
 Work3::Work3(int p1, bool p2)
 : mI(++sI)
 {
-	std::cout << "3#" << mI << ": created with parameters " << p1 << "and" << p2 << std::endl;
+	std::cout << "3#" << mI << ": created with parameters " << p1 << " and " << p2 << std::endl;
 }
 
 Work3::~Work3()

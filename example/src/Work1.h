@@ -1,7 +1,9 @@
 #ifndef WORK1_H
 #define WORK1_H
 
-class Work1
+#include "IWork.h"
+
+class Work1 : public IWork
 {
 public:
 	Work1();
