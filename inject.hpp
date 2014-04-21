@@ -37,37 +37,48 @@ namespace injector##I{ \
 
 #define inject_as_object(I, T, ...) \
 namespace injector##I{ \
-struct Factory \
-	{ \
-	Factory() : object(__VA_ARGS__) {} \
-	I& get() { return object; } \
-	T object; \
+	struct Factory \
+		{ \
+		Factory() : object(__VA_ARGS__) {} \
+		I& get() { return object; } \
+		T object; \
 	}; \
 }
 
 #define inject_as_share(I, T, ...) \
 namespace injector##I{ \
-struct Factory \
+	struct Factory \
 	{ \
-	Factory() { \
-		if (refCount == 0) { \
-			object = new T(__VA_ARGS__); \
+		Factory() { \
+			if (refCount == 0) { \
+				object = new T(__VA_ARGS__); \
+			} \
+			++refCount; \
 		} \
-		++refCount;\
-	} \
-	~Factory() { \
-		--refCount; \
-		if (refCount == 0) { \
-			delete object; \
+		~Factory() { \
+			if (--refCount == 0) { \
+				delete object; \
+			} \
 		} \
-	} \
-	I& get() { return *object; } \
-	static T* object; \
-	static unsigned int refCount; \
-}; \
+		I& get() { return *object; } \
+		static T* object; \
+		static unsigned int refCount; \
+	}; \
 	T* Factory::object = 0; \
 	unsigned int Factory::refCount = 0; \
 }
+
+#define inject_as_runtime(I) \
+namespace injector##I{ \
+	struct Factory \
+	{ \
+		I& get() { return *object; } \
+		static I* object; \
+	}; \
+	I* Factory::object = 0; \
+}
+
+#define inject_set_runtime(I, Value) injector##I::Factory::object = (Value); 
 
 #define inject(I, Name) \
 	struct I##Proxy \

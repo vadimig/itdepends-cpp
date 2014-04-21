@@ -81,12 +81,14 @@
     <ClInclude Include="src\Work1.h" />
     <ClInclude Include="src\Work2.h" />
     <ClInclude Include="src\Work3.h" />
+    <ClInclude Include="src\Work4.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Work1.cpp" />
     <ClCompile Include="src\Work2.cpp" />
     <ClCompile Include="src\Work3.cpp" />
+    <ClCompile Include="src\Work4.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
